@@ -17,9 +17,10 @@ g = 9.81
 
 computeBikerPower :: Biker -> MechInfo -> Double
 computeBikerPower Biker{..} MechInfo{..} =
-  let frictionForce = _bikerConstantDragNormalCoeff * cos _mechInfoInclinationAngle*_bikerTotalWeight*g
-                    +  _bikerLinearDragNormalCoeff * cos _mechInfoInclinationAngle*_bikerTotalWeight*g * _mechInfoSpeed
-                    + _bikerQuadraticAeroDragCoeff * _mechInfoSpeed^2                                                   in
-  let gravityDrag   = _bikerTotalWeight * sin _mechInfoInclinationAngle * g                                             in
-  let bikerForce    = frictionForce + gravityDrag + _mechInfoAcceleration * _bikerTotalWeight                           in
+  let normalForce   = cos _mechInfoInclinationAngle*_bikerTotalWeight*g                        in
+  let frictionForce = _bikerConstantDragNormalCoeff * normalForce
+                    +  _bikerLinearDragNormalCoeff * normalForce * _mechInfoSpeed
+                    + _bikerQuadraticAeroDragCoeff * _mechInfoSpeed^2                          in
+  let gravityDrag   = _bikerTotalWeight * sin _mechInfoInclinationAngle * g                    in
+  let bikerForce    = frictionForce + gravityDrag + _mechInfoAcceleration * _bikerTotalWeight  in
   bikerForce * _mechInfoSpeed
