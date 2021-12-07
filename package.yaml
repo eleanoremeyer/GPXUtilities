@@ -21,6 +21,15 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- time
+- lens
+- vector
+- xml-conduit
+- xml-lens
+- text
+- containers
+- Chart
+- Chart-cairo
 
 library:
   source-dirs: src
@@ -33,6 +42,7 @@ executables:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
+    - -O2
     dependencies:
     - GPXUtilities
 

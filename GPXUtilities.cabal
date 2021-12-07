@@ -25,13 +25,25 @@ source-repository head
 
 library
   exposed-modules:
+      GPX.GPXParser
+      GPX.Track
       Lib
+      Models.Biker
   other-modules:
       Paths_GPXUtilities
   hs-source-dirs:
       src
   build-depends:
-      base >=4.7 && <5
+      Chart
+    , Chart-cairo
+    , base >=4.7 && <5
+    , containers
+    , lens
+    , text
+    , time
+    , vector
+    , xml-conduit
+    , xml-lens
   default-language: Haskell2010
 
 executable GPXUtilities-exe
@@ -40,10 +52,19 @@ executable GPXUtilities-exe
       Paths_GPXUtilities
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -O2
   build-depends:
-      GPXUtilities
+      Chart
+    , Chart-cairo
+    , GPXUtilities
     , base >=4.7 && <5
+    , containers
+    , lens
+    , text
+    , time
+    , vector
+    , xml-conduit
+    , xml-lens
   default-language: Haskell2010
 
 test-suite GPXUtilities-test
@@ -55,6 +76,15 @@ test-suite GPXUtilities-test
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      GPXUtilities
+      Chart
+    , Chart-cairo
+    , GPXUtilities
     , base >=4.7 && <5
+    , containers
+    , lens
+    , text
+    , time
+    , vector
+    , xml-conduit
+    , xml-lens
   default-language: Haskell2010
