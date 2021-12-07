@@ -77,7 +77,7 @@ computeMechInfo (prevprev,prev) curr (next,nextnext) =
   MechInfo { _mechInfoSpeed = speed
            , _mechInfoAcceleration = accel
            , _mechInfoVertSpeed = verticalSpeed
-           , _mechInfoInclinationAngle = atan (verticalSpeed / speed)
+           , _mechInfoInclinationAngle = atan (verticalSpeed / (speed+eps))
            , debugField = MechDebugInfo time dist }
   where
     eps :: Double
