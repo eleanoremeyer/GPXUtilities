@@ -31,6 +31,7 @@ main = do
   let diag = [(tP^.trackPointTime,tP^.trackPointCoordinate.coordinateElevation,mI^.mechInfoSpeed,bP) |
                 (tP,mI,bP)<-V.toList (V.zip3 track mechInfo (V.map (computeBikerPower demoBiker) mechInfo))]
   toFile def "example2_big.png" $ do
+    layoutlr_left_axis . laxis_generate .= scaledAxis def (-3000,3000)
     layoutlr_left_axis . laxis_override .= axisGridHide
     layoutlr_right_axis . laxis_override .= axisGridHide
     -- plotLeft (line "Elevation" [ [ (t,e) | (t,e,_,_) <- diag] ])
